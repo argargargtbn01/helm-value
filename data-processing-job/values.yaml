@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: quang1709/data-processing-job
+  pullPolicy: Always
+  tag: "latest"
+
+service:
+  type: NodePort
+  port: 3001
+  targetPort: 3001
+  nodePort: 30007
+
+resources:
+  limits:
+    cpu: "400m"
+    memory: "512Mi"
+  requests:
+    cpu: "100m"
+    memory: "256Mi"
+
+ingress:
+  enabled: false
+
+serviceAccount:
+  create: true
+  name: "data-processing-job-sa"
+autoscaling:
+  enabled: false
