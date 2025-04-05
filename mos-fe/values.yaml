@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: quang1709/mos-fe
+  pullPolicy: Always
+  tag: "latest"
+
+service:
+  type: NodePort
+  port: 3000
+  targetPort: 3000
+  nodePort: 3000
+
+resources:
+  limits:
+    cpu: "400m"
+    memory: "512Mi"
+  requests:
+    cpu: "100m"
+    memory: "256Mi"
+
+ingress:
+  enabled: false
+
+serviceAccount:
+  create: true
+  name: "mos-fe-sa"
+autoscaling:
+  enabled: false
