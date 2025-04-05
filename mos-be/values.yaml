@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: quang1709/mos-be
+  pullPolicy: Always
+  tag: "latest"
+
+service:
+  type: NodePort
+  port: 3003
+  targetPort: 3003
+  nodePort: 3003
+
+resources:
+  limits:
+    cpu: "400m"
+    memory: "512Mi"
+  requests:
+    cpu: "100m"
+    memory: "256Mi"
+
+ingress:
+  enabled: false
+
+serviceAccount:
+  create: true
+  name: "mos-be-sa"
+autoscaling:
+  enabled: false
